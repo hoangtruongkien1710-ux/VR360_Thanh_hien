@@ -1,0 +1,342 @@
+﻿<krpano>
+
+	<!-- <include url="editor/edit_pit_tr.xml" />   -->
+	  
+	<!-- edit_calouttr   
+		t_bgcolor 			- цвет заливки инфо выноски
+		t_bgborder		- параметры бордюра выноски
+		t_bgshadow		- тень выноски
+		css					- текст
+		t_padding			- отступы текста 
+		t_txtshadow		- тень текста
+		t_width				- ширина текстовой выноски
+		t_height			- высота текстовой выноски
+		
+		l_color				- цвет линий
+		
+		pit_border			- параметры бордюра круглой точки
+		pit_color			- цвет круглой точки
+		pit_shadow		-
+		
+		drag_tab			- перемещать выноску отдельно от линий
+		angle_step		- угол фиксации вращения линий
+		
+		пробел				- создать точку
+		shift					- фиксация угла поворота линий 
+		visibility_area	- (0-1) от значения view.fov. Зона (радиус) в пределах которой появляются инфо точки (callout_transformer.visibility_area * view.fov). Если 1 и больше  - отключен опрос
+		close_all_inf 		-	свернуть все инфо хотспоты
+	-->
+ 
+ 	<callout_transformer  
+		pit_border="1 0x0a3847 1.0"
+		pit_bgroundedge="10"
+		pit_color="0xfbff00"
+		pit_shadow="0 0 0 0х000000 0.5"
+		pit_width="8"
+		pit_height="8" 
+		l_color="0x103d4f"
+		l_thickness = "1"  
+		t_bg="true"
+		t_bgcolor="0x0a3847"
+		t_bgalpha="1"
+		t_bgroundedge="15"
+		t_bgborder="0 0xffffff 1.0"
+		t_bgshadow="4 4 10 0x000000 0.4"
+		css="font-family:Verdana; font-size:16px; color:#FFFFFF; text-align: center;" 
+		t_padding="6 14 6 14" 
+		t_txtshadow="0 0 0 0х000000 0.5"
+		t_width="auto"
+		t_height="auto"   
+		
+		drag_tab ="false"
+		angle_step="15"
+		fixAngle="true"  
+		auto_show="true"
+		visibility_area="0.3"
+		close_all_inf="false" 
+	/>  
+ 
+	
+	
+	<!-- ///////////    стили   //////////////////////-->
+	
+	<!-- 
+		getlooktodistance(cur_angle, ath, atv);  - cur_angle -  это угол хотспота от центра экрана
+		openhs 			-	
+		 
+	-->
+		
+	<!-- хотспот инфо точки -->
+	<style name="pit_hs_inf" type="text" keep="false"  width="10" height="10" ox="0" oy="0" bgalpha="0.0" bgborder="0" bg="true"  capture="false" bgcapture="false" zoom="false" enabled="true"   bgcolor="0x000000"  descr=""
+		css="get:callout_transformer.css" 
+		
+		l_1="80" 
+		l_2="40"
+		l_color="get:callout_transformer.l_color" 
+		l_thickness="get:callout_transformer.l_thickness"
+		
+		rotate_1="-45" 
+		rotate_2="45" 
+		rotate_3="0" 
+		title=""  
+		tox="0" 
+		toy="0"  
+		
+		t_bg = "get:callout_transformer.t_bg"
+		t_bgcolor="get:callout_transformer.t_bgcolor" 
+		t_bgalpha="get:callout_transformer.t_bgalpha" 
+		t_bgroundedge="get:callout_transformer.t_bgroundedge" 
+		t_bgborder="get:callout_transformer.t_bgborder"  
+		t_bgshadow="get:callout_transformer.t_bgshadow"  
+		t_padding="get:callout_transformer.t_padding" 
+		t_width="get:callout_transformer.t_width" 
+		t_height="get:callout_transformer.t_height" 
+		t_txtshadow="get:callout_transformer.t_txtshadow" 
+		pit_color="get:callout_transformer.pit_color" 
+		pit_border="get:callout_transformer.pit_border" 
+		pit_bgroundedge="get:callout_transformer.pit_bgroundedge" 
+		pit_shadow="get:callout_transformer.pit_shadow" 
+		pit_width="get:callout_transformer.pit_width" 
+		pit_height="get:callout_transformer.pit_height"
+		
+		onloaded="load_pit_hs_inf(*name); 
+						capture = (edit_calouttr? true : false); 
+						if(callout_transformer.auto_show, popup(); );
+						descr = name + '_txt';"
+						
+		popup=" if(callout_transformer.auto_show,
+						getlooktodistance(cur_angle, ath, atv);    
+						if(cur_angle LE (callout_transformer.visibility_area * view.fov),  
+							if(!openhs AND !anime, open_hs_fr(*name)); 
+							,
+							if(openhs AND !anime, close_hs_fr(*name));	 
+						);	 
+						delayedcall(0.01, popup()); 
+					);"	 
+					
+		openhs="true" 
+		anime="false"
+		ondown.addevent="if(edit_calouttr, drag_inf_hs());"  
+		
+	/>
+	 
+<!-- 	 	
+	onclick="if(openhs, close_hs_fr(*name), open_hs_fr(*name)); "
+	popup - проверка угла  в цикле 0.01с
+	openhs - раскрыта или нет инфоточка в текущий момент
+	anime  - в данный момент анимация раскрытьия/закрытия , не вызывать действие в э момент анимации
+ -->
+
+	<!-- для анимированной точки  html="data:test2"   x="-1" y="-2"  width="1" height="1"  -->
+	<!-- круглая точка на хс -->
+	<style name="pit_lr_inf" type="container" align="center" edge="center" width="get:callout_transformer.pit_width" height="get:callout_transformer.pit_height"  x="0" y="0"   rotate="45"  bgalpha="1" bg="true" enabled="true" bgcapture="true" capture="false" zorder="51" 
+			ondown="if(edit_calouttr AND !html, EditTxtLayer(*name));  "    
+	/> 
+	 
+	<!-- круглая точка на хс   для анимированной точки  html="data:test2"   x="-1" y="-2"  width="1" height="1"  -->
+<!-- 	<style name="pit_lr_inf" type="text" align="center" edge="center"  x="0" y="0"  width="1" height="1" enabled="true" bg="false"  bgcapture="true" capture="false" zorder="51" ondown="if(edit_calouttr AND !html, EditTxtLayer(*name)); EditTxtLayer(*name)"   html="data:test2"  /> -->
+	
+	
+	
+	<!-- изменение цвета точки css и пульсирующего круга  применИм ко всем сразу -->
+	<action name="set_atr_class"  type="Javascript"><![CDATA[
+		if(args[1]){
+		
+			// получаем все элементы с классом "pulse"
+			 var elements = document.getElementsByClassName("pulse"); 
+			 
+			// установить новый цвет фона во всех элементах класса "pulse"
+			 for (var i = 0; i < elements.length; i++) { 
+				//elements[i].style.backgroundColor = '#' + args[1];
+			} 
+			
+			// Получаем стиль переменной CSS
+			var style = getComputedStyle(document.documentElement);
+
+			// Меняем значение переменной CSS - круги
+			if( args[2]  ==  'border_lr') {
+			document.documentElement.style.setProperty('--krugi-bg-color',  '#' + args[1] ); 
+			}
+			//Изменение цвета точки css анимации  
+			if( args[2]  ==  'fill_lr') {
+				document.documentElement.style.setProperty('--pit-bg-color',  '#' + args[1] ); 
+			} 
+
+			//console.log(elements.background )
+		}
+]]></action>
+
+
+
+	<!-- линия 1 от точки наклонная 	 -->
+	<style name="line_1_inf" type="container" keep="false" align="center" edge="left" width="100" height="2" rotate="-45" zorder="50" handcursor="false" capture="false" enabled="true"
+			bgborder="0 0xFFFFFF 0"  bgcolor="" bgcapture="false" bgroundedge="2" bgalpha="2" bgshadow="" />	
+	
+	<!-- линия  2 горизонтальная к тексту	 -->		
+	<style name="line_2_inf" type="container" keep="false" align="right" edge="left" width="100" height="2" rotate="45"  zorder="50" handcursor="false" capture="false"
+			bgborder="0 0xFFFFFF 0"  bgcolor="get:callout_transformer.l_color" bgcapture="true" bgroundedge="2" bgalpha="1" bgshadow="3 3 7 0x000000 0.0" />	 
+	
+	<!-- табличка с текстом   -->
+	<style name="text_inf" keep="false" type="text" html=""  bgcapture="true" capture="false" align="right" edge="center"  zorder="50" ox="0" oy="0" parenths="" mipmapping="true"  maskchildren="true"
+			css="get:callout_transformer.css" txtshadow="get:callout_transformer.t_txtshadow" vcenter="true" padding="get:callout_transformer.padding" bgcolor="get:callout_transformer.t_bgcolor" bgalpha="1" bgroundedge="5"  bgborder="0 0xffffff 1.0" bgshadow="0 0 0 0x000000 0.5"  textalign="center" editable="false" editenterkey="shiftnewline"
+			onover.addevent="hoverTabl = true; " 
+			onout.addevent="if(edit_calouttr, draghs = true; hoverTabl = false;);"  
+			ondown.addevent="if(edit_calouttr, drag_tabl_oxoy(*name));"  
+			onloaded="if(edit_calouttr, editable= edit_calouttr? true : false;)" 
+			onclick.addevent="" />
+	
+	
+	
+ 
+	<!-- создать хотспот-->
+	<action name="load_pit_hs_inf"  scope="local"  args="namhs" > 
+		copy(hs, hotspot[*namhs]);
+		
+		lin1 = namhs + '_l1';
+		lin2 = namhs + '_l2';
+		text = namhs + '_txt';
+		pit = namhs + '_pit';
+		
+		<!-- создать линию 1-->		
+		addlayer(*lin1, lr);
+		lr.loadstyle(line_1_inf); 
+		lr.parent = 'hotspot[' + namhs + ']';
+		lr.width = hs.l_1;
+		lr.height =hs.l_thickness;
+		lr.rotate = hs.rotate_1;
+		lr.bgcolor =hs.l_color; 
+		
+		<!-- создать линию 2-->	
+		addlayer(*lin2, lr);
+		lr.loadstyle(line_2_inf); 
+		lr.parent = lin1 ;
+		lr.width = hs.l_2;
+		lr.height =hs.l_thickness;
+		lr.rotate = hs.rotate_2;
+		lr.bgcolor =hs.l_color;
+		
+		<!-- создать текстовую выноска-->	
+		addlayer(*text, lr);
+		lr.loadstyle(text_inf); 
+		lr.parent = lin2 ;
+		lr.rotate = hs.rotate_3; 
+		lr.html = hs.title;
+		lr.parenths = namhs;
+		lr.ox = hs.tox;
+		lr.oy = hs.toy;
+		lr.bg = hs.t_bg;
+		lr.bgcolor = hs.t_bgcolor;
+		lr.bgalpha = hs.t_bgalpha;
+		lr.bgroundedge = hs.t_bgroundedge;
+		lr.bgborder = hs.t_bgborder;   
+		lr.bgshadow = hs.t_bgshadow;
+		lr.css = hs.css;  		
+		lr.padding = hs.t_padding;  
+		lr.txtshadow = hs.t_txtshadow;
+		lr.width = hs.t_width;
+		lr.height = hs.t_height;
+		if(edit_calouttr, draghs = true; hoverTabl = false;  lr.editable= edit_calouttr? true : false;);
+	 
+		
+		<!-- создать круглую точку на хотспоте -->	
+		addlayer(*pit, lr);
+		lr.loadstyle(pit_lr_inf);  
+		lr.parent =  'hotspot[' + namhs + ']';
+		lr.bgcolor = hs.pit_color;
+		lr.bgborder = hs.pit_border;
+		lr.bgroundedge = hs.pit_bgroundedge;
+		lr.bgshadow = hs.pit_shadow;
+		lr.width = hs.pit_width;
+		lr.height = hs.pit_height; 
+		//if(edit_calouttr, lr.bgcapture = true);
+		
+	</action>
+ 
+ 
+ <!-- *********************************************************** -->
+ 
+ 	 	<events name="Callout_transf_event" keep="true" 
+        onnewscene="if(callout_transformer.close_all_inf, delayedcall(0.01, close_all_ct())); "   
+    />	 
+	
+ 
+ 	<!-- Закрыть без анимации все инфо точки  -->
+	<action name="close_all_ct" scope="local"  >
+		for(set(hsi, 0), hsi LT hotspot.count, inc(hsi),
+			hs = hotspot[*hsi];
+			if(hs.style == 'pit_hs_inf' ,   
+				lin1 = hs.name + '_l1';
+				lin2 = hs.name + '_l2';
+				text = hs.name + '_txt';  
+				hs.openhs = false;  
+				layer[*text].alpha = 0; 
+				layer[*lin2].width = 0;
+				layer[*lin1].width = 0; 
+			);
+		);
+		callout_transformer.close_all_inf = true;
+	</action>
+	
+	
+	<!-- Закрыть плавно все инфо точки  -->
+	<action name="close_all_inf_hs_ct" scope="local"  >
+		for(set(hsi, 0), hsi LT hotspot.count, inc(hsi),
+			hs = hotspot[*hsi];
+			if(hs.style == 'pit_hs_inf' OR  hs.style == 'edit_pit_hs_inf' ,   
+				close_hs_fr(*hs.name);  
+			);
+		);
+		callout_transformer.close_all_inf = true;
+	</action>
+	
+	<!-- Закрыть плавно  инфо точку  -->
+	<action name="close_hs_fr" scope="local" args="namhs" >
+		hotspot[*namhs].openhs = false; 
+		lin1 = namhs + '_l1';
+		lin2 = namhs + '_l2';
+		text = namhs + '_txt'; 
+		hs = hotspot[*namhs];  
+		hs.openhs = false; 
+		hs.anime = true;
+		 
+		tween(layer[*text].alpha, 0, 0.2); 
+		tween(layer[*lin2].width, 0, 0.3, default, 
+			tween(layer[*lin1].width, 0, 0.3, default,  hs.anime=false);
+		);  
+	</action>
+	
+	
+	<!-- Открыть все инфо точки   -->
+	<action name="open_all_inf_hs_ct" scope="local"  >
+		for(set(hsi, 0), hsi LT hotspot.count, inc(hsi),
+			hs = hotspot[*hsi];
+			if(hs.style == 'pit_hs_inf' OR  hs.style == 'edit_pit_hs_inf' , 
+				open_hs_fr(*hs.name); 
+				if(callout_transformer.auto_show, callwith(hotspot[*hs.name], popup); );
+			);
+		);
+		callout_transformer.close_all_inf = false;
+	</action> 
+
+	
+	<!-- Открыть  инфо точку   -->
+	<action name="open_hs_fr" scope="local" args="namhs" >
+		lin1 = namhs + '_l1';
+		lin2 = namhs + '_l2';
+		text = namhs + '_txt'; 
+		hs = hotspot[*namhs];  
+		hs.openhs = true; 
+		hs.anime = true;
+		
+		tween(layer[*lin1].width, get(hs.l_1), 0.3, default, 
+			tween(layer[*lin2].width, get(hs.l_2), 0.2); 
+			tween(layer[*text].alpha, 1, 0.2, default, hs.anime=false); 
+		);   
+	</action>
+	
+	
+	
+	
+</krpano>
+	
+	

@@ -1,0 +1,21 @@
+﻿	
+	
+	<scene name="scene_example" title="example" thumburl="callout_transformer/thumb.jpg" >
+		<preview type="grid(cube,32,32,512,0xCCCCCC,0xAAAAAA,0xCCCCCC);" />
+			 
+	
+		<!--*** callout_transformer ***-->
+		<hotspot name="infhs_0_1" style="pit_hs_inf" ath="6.4891" atv="9.8321" l_1="65" l_2="47" rotate_1="-60" rotate_2="60" title="6" /> 
+		<hotspot name="infhs_0_2" style="pit_hs_inf" ath="-18.9346" atv="4.0300" pit_color="0xff0000" pit_border="1,1,1,1 0xffffff 1.0" pit_bgroundedge="0 0 0 0" l_1="79" l_2="12" tox="26" toy="-1" t_bgcolor="0xffffff" css="font-family:Verdana; text-align: center; color: #0f4382; font-size:16px;" t_txtshadow="0 0 0 0x000000 0.5" l_color="0xffffff" title="4" /> 
+		<hotspot name="infhs_0_3" style="pit_hs_inf" ath="-37.1577" atv="-9.0960" pit_color="0x0022ff" pit_border="1,1,1,1 0xffffff 1.0" l_1="49" l_2="54" rotate_1="-60" rotate_2="60" tox="-28" toy="-13" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" t_txtshadow="1 1 2 0x000000 0.6" l_color="0xffffff" title="2" /> 
+		<hotspot name="infhs_0_4" style="pit_hs_inf" ath="-1.8499" atv="-12.3509" pit_color="0xff0000" pit_border="1,1,1,1 0xffffff 1.0" pit_bgroundedge="0 0 0 0" l_1="52" l_2="19" rotate_1="-135" rotate_2="315" rotate_3="-180" tox="-24" toy="-4" t_bgcolor="0xffffff" css="font-family:Verdana; text-align: center; color: #0f4382; font-size:16px;" t_txtshadow="0 0 0 0x000000 0.5" l_color="0xffffff" title="3" /> 
+		<hotspot name="infhs_0_5" style="pit_hs_inf" ath="22.2846" atv="-10.7451" l_1="55" l_2="37" rotate_1="-120" rotate_2="300" rotate_3="-180" title="5" /> 
+		<hotspot name="infhs_0_6" style="pit_hs_inf" ath="-25.3678" atv="7.5727" pit_color="0x0022ff" pit_border="1,1,1,1 0xffffff 1.0" l_1="52" l_2="36" rotate_1="-120" rotate_2="300" rotate_3="-180" tox="15" toy="-16" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" t_txtshadow="1 1 2 0x000000 0.6" l_color="0xffffff" title="1" /> 
+		<hotspot name="infhs_0_7" style="pit_hs_inf" ath="34.4229" atv="-10.0965" pit_width="3" pit_height="3" pit_color="0xe3e3e3" pit_border="1,1,1,1 0xffffff 1.0" l_1="67" l_2="49" rotate_1="-120" rotate_2="120" tox="-26" toy="-16" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" t_txtshadow="1 1 2 0x000000 0.6" l_color="0xffffff" title="8" /> 
+		<hotspot name="infhs_0_8" style="pit_hs_inf" ath="29.9875" atv="9.9982" pit_color="0xffe100" pit_border="1,1,1,1 0x0055ff 1.0" l_1="57" l_2="54" rotate_1="-60" rotate_2="60" tox="-28" toy="-13" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" css="font-family:Verdana; text-align: center; color: #003cff; font-size:16px;" t_txtshadow="1 1 2 0x000000 0.2" l_color="0x0059ff" title="7" /> 
+		<hotspot name="infhs_0_9" style="pit_hs_inf" ath="42.9435" atv="-9.2738" pit_width="13" pit_height="13" pit_color="0x00ddff" pit_border="1,1,1,1 0xff0d00 1.0" pit_bgroundedge="0 8 8 8" l_1="63" l_2="12" rotate_1="-90" rotate_2="90" tox="26" toy="-3" t_bgcolor="0xde0000" t_bgalpha="0.3" t_bgborder="0,0,0,0 0xffffff 1.0" css="font-family:Verdana; text-align: center; color: #0f4382; font-size:16px;" t_txtshadow="0 0 0 0x000000 0.5" l_color="0xff0707" title="9" /> 
+		<hotspot name="infhs_0_10" style="pit_hs_inf" ath="46.0057" atv="8.1371" pit_width="13" pit_height="13" pit_color="0x50aee8" pit_border="1,1,1,1 0xffffff 1.0" pit_bgroundedge="0 8 8 8" l_1="79" l_2="12" rotate_1="-90" rotate_2="90" tox="31" toy="-3" t_bgcolor="0x1a9fc4" t_bgalpha="0.3" t_bgborder="0,0,0,0 0xffffff 1.0" css="font-family:Verdana; text-align: center; color: #c9d9ed; font-size:16px;" t_txtshadow="0 0 0 0x000000 0.5" l_color="0xffffff" title="10" /> 
+
+	</scene>
+	
+	
