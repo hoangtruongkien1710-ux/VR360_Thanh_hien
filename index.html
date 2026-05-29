@@ -1,27 +1,105 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<title>Trường Mầm Non Thanh Hiền</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	<meta name="mobile-web-app-capable" content="yes" />
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<meta http-equiv="x-ua-compatible" content="IE=edge" />
-	<style>
-		html { height:100%; }
-		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
-	</style>
+    <title>Trường Mầm Non Thanh Hiền</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <style>
+        html, body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; background-color:#000000; }
+        
+        /* 1. Màn hình chờ chứa ảnh nền đã được giảm kích thước đi 1/3 (còn lại 66%) */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Sử dụng link ảnh của bạn */
+            background: url('http://giaphahohoang.sunsky.info/wp-content/uploads/2026/05/16-05.png') no-repeat center center;
+            /* Giảm đi 1/3 kích thước nghĩa là hiển thị ở mức 66% chiều rộng màn hình, chiều cao tự động */
+            background-size: 35% auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; 
+            transition: opacity 0.5s ease; 
+        }
+
+        /* Lớp phủ mờ nhẹ để tạo chiều sâu và nổi bật nút bấm */
+        #welcome-screen::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.2); 
+            z-index: 1;
+        }
+
+        /* Tiêu đề trên màn hình chờ */
+        #welcome-title {
+            position: relative;
+            z-index: 2;
+            color: #FFFFFF;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            padding: 0 20px;
+        }
+
+        /* 2. Cấu hình nút bấm xem tour */
+        #start-button {
+            position: relative;
+            z-index: 2;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background-color: #FF5722; /* Màu cam nổi bật */
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        /* Hiệu ứng zoom nhẹ khi di chuột vào nút */
+        #start-button:hover {
+            background-color: #E64A19;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
+
+<div id="welcome-screen">
+    <div id="welcome-title">TRƯỜNG MẦM NON THANH HIỀN</div>
+    <button id="start-button" onclick="startTour()">KHÁM PHÁ TOUR 360°</button>
+</div>
 
 <script src="tour.js"></script>
 
 <div id="pano" style="width:100%;height:100%;">
-	<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
-	<script>
-		embedpano({xml:"tour.xml", target:"pano", passQueryParameters:"startscene,startlookat"});
-	</script>
+    <noscript><table style="width:100%;height:100%"><tr style="vertical-align:middle"><td><div style="text-align:center">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
+    <script>
+        // Hàm xử lý kích hoạt tour khi ấn nút
+        function startTour() {
+            var welcome = document.getElementById('welcome-screen');
+            welcome.style.opacity = '0'; // Tạo hiệu ứng mờ dần
+            
+            setTimeout(function() {
+                welcome.style.display = 'none'; // Ẩn hẳn màn hình chờ
+            }, 500); 
+
+            // Khởi chạy tour 360 độ từ krpano
+            embedpano({xml:"tour.xml", target:"pano", passQueryParameters:"startscene,startlookat"});
+        }
+    </script>
 </div>
 
 </body>
