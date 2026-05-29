@@ -189,7 +189,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		<image>
 			<cube url="panos/123.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
-      <hotspot name="Trong-cong_Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="3.250" atv="16.243" scale="1" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_4, null, MERGE, BLEND(0.5));"  /> 
+      <hotspot name="Trong-cong_Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="3.250" atv="16.243" scale="1" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_1234, null, MERGE, BLEND(0.5));"  /> 
          <hotspot name="Len-cao_Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/maybay.png"  ath="19.800" atv="-42.450" scale="0.09" distorted="true" rotate="7.30" rotationorder="YXZ" onclick="loadscene(scene_1, null, MERGE, BLEND(0.5));"  /> 
         <hotspot name="mui-ten-2" url="%FIRSTXML%/add_hotspot/icons/mui-ten.png"  ath="20" atv="-45.200" scale="0.05" distorted="true" rotate="-0.10" rotationorder="YXZ"   />
 	</scene>
@@ -211,7 +211,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
      
 	</scene> -->
 
-	<scene name="scene_4" title="Trong cổng" onstart="" thumburl="panos/4.tiles/thumb.jpg" lat="21.12780531" lng="105.95044308" alt="88.89" heading="0.0">
+	<!-- <scene name="scene_4" title="Trong cổng" onstart="" thumburl="panos/4.tiles/thumb.jpg" lat="21.12780531" lng="105.95044308" alt="88.89" heading="0.0">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -227,8 +227,26 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
           
 	   <hotspot name="Ngoai-cong_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-175.950" atv="10.193" scale="0.7" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_123, null, MERGE, BLEND(0.5));"  /> 
      
-	     <hotspot name="San-choi-1_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-46.200" atv="5.143" scale="0.234" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));"  /> 
+	     <hotspot name="San-choi-1_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-46.200" atv="5.143" scale="0.234" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));"  />  -->
     
+	<!-- </scene> -->
+    	<scene name="scene_1234" title="Trong cổng" onstart="" thumburl="panos/1234.tiles/thumb.jpg" lat="21.12780531" lng="105.95044308" alt="88.89" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/1234.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/1234.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+        <hotspot name="San-giua_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="0.500" atv="5.543" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_5, null, MERGE, BLEND(0.5));"  /> 
+          
+	   <hotspot name="Ngoai-cong_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-175.950" atv="10.193" scale="0.7" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_123, null, MERGE, BLEND(0.5));"  /> 
+     
+	     <hotspot name="San-choi-1_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-46.200" atv="5.143" scale="0.234" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));"  /> 
+
 	</scene>
 
 	<scene name="scene_5" title="Giữa sân" onstart="" thumburl="panos/5.tiles/thumb.jpg" lat="21.12786933" lng="105.95040592" alt="88.89" heading="0.0">
@@ -243,7 +261,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 			<cube url="panos/5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
      
-	 <hotspot name="Trong-cong_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-178.000" atv="5.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_4, null, MERGE, BLEND(0.5));"  /> 
+	 <hotspot name="Trong-cong_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-178.000" atv="5.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_1234, null, MERGE, BLEND(0.5));"  /> 
      <hotspot name="Vui-choi-1_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-86.550" atv="3.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));"  /> 
      <hotspot name="Vach-dich_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="48.650" atv="1.993" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_9, null, MERGE, BLEND(0.5));" /> 
    
