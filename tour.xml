@@ -1,6 +1,6 @@
 ﻿<!-- <krpano version="1.22" debugkeys="true" showerrors="false" debugmode="true" title="Trường Mầm non Thanh Hiền"> -->
 <krpano version="1.22" debugkeys="true" showerrors="false" debugmode="true" title="rường Mầm non Thanh Hiền" onstart="play_bg_sound();">
-	<include url="FloorPlan/xml/floorplan_SM.xml"/>
+	<!-- <include url="FloorPlan/xml/floorplan_SM.xml"/> -->
 	<include url="skin/vtourskin.xml" />
 	<plugin name="soundinterface" url="plugins/soundinterface.js" rootpath="" keep="true" preload="true" />
 
@@ -156,8 +156,6 @@
 		<hotspot name="chua-dong-lai" style="pit_hs_inf" ath="-91.3205" atv="14.9857" pit_color="0x0022ff" pit_border="1,1,1,1 0xffffff 1.0" l_1="49" l_2="54" rotate_1="-60" rotate_2="60" tox="-28" toy="-13" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" t_txtshadow="1 1 2 0x000000 0.6" l_color="0xffffff" title="Chùa Đông Lai" /> 
 		<hotspot name="kđt hanaka" style="pit_hs_inf" ath="140.8258" atv="13.7914" pit_color="0x0022ff" pit_border="1,1,1,1 0xffffff 1.0" l_1="49" l_2="54" rotate_1="-60" rotate_2="60" tox="-28" toy="-13" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" t_txtshadow="1 1 2 0x000000 0.6" l_color="0xffffff" title="HANAKA Paris Ocean Park" />  -->
 		
-         <hotspot name="thpt_tu-son" style="pit_hs_inf" ath="39.4775" atv="58.7963" pit_color="0x0022ff" pit_border="1,1,1,1 0xffffff 1.0" l_1="49" l_2="54" rotate_1="-60" rotate_2="60" tox="-28" toy="-13" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" t_txtshadow="1 1 2 0x000000 0.6" l_color="0xffffff" 
-title="&lt;b&gt;&lt;font size='4'&gt;Trường THPT Từ Sơn&lt;/font&gt;&lt;/b&gt;" />
 
 <hotspot name="dh_tdtt_bac_ninh" style="pit_hs_inf" ath="164.8198" atv="24.9852" pit_color="0x0022ff" pit_border="1,1,1,1 0xffffff 1.0" l_1="49" l_2="54" rotate_1="-60" rotate_2="60" tox="-28" toy="-20" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" t_txtshadow="1 1 2 0x000000 0.6" l_color="0xffffff" 
 title="&lt;b&gt;&lt;font size='4'&gt;Trường ĐH Thể dục&lt;br/&gt;Thể thao Bắc Ninh&lt;/font&gt;&lt;/b&gt;" />
