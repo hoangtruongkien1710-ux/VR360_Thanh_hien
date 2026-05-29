@@ -184,7 +184,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="150" maxpixelzoom="2.0" fovmin="70" fovmax="180" limitview="auto" />
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140" maxpixelzoom="2.0" fovmin="70" fovmax="180" limitview="auto" />
 
 		<preview url="panos/123.tiles/preview.jpg" />
 
