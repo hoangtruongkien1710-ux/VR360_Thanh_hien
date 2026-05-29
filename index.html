@@ -11,17 +11,16 @@
     <style>
         html, body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; background-color:#000000; }
         
-        /* 1. Màn hình chờ chứa ảnh nền đã được giảm kích thước đi 1/3 (còn lại 66%) */
+        /* 1. Cấu hình mặc định cho Màn hình chờ (Áp dụng cho Máy tính / Màn hình lớn) */
         #welcome-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Sử dụng link ảnh của bạn */
             background: url('http://giaphahohoang.sunsky.info/wp-content/uploads/2026/05/16-05.png') no-repeat center center;
-            /* Giảm đi 1/3 kích thước nghĩa là hiển thị ở mức 66% chiều rộng màn hình, chiều cao tự động */
-            background-size: 35% auto;
+            /* Trên máy tính: giữ kích thước gọn gàng bao gồm chiều cao tự động fit */
+            background-size: auto 80%; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -30,12 +29,12 @@
             transition: opacity 0.5s ease; 
         }
 
-        /* Lớp phủ mờ nhẹ để tạo chiều sâu và nổi bật nút bấm */
+        /* Lớp phủ mờ nhẹ phía sau để tách biệt nền đen và ảnh nếu cần */
         #welcome-screen::before {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.2); 
+            background: rgba(0, 0, 0, 0.3); 
             z-index: 1;
         }
 
@@ -44,34 +43,56 @@
             position: relative;
             z-index: 2;
             color: #FFFFFF;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
             padding: 0 20px;
+            text-transform: uppercase;
         }
 
         /* 2. Cấu hình nút bấm xem tour */
         #start-button {
             position: relative;
             z-index: 2;
-            padding: 15px 40px;
-            font-size: 18px;
+            padding: 14px 35px;
+            font-size: 16px;
             font-weight: bold;
             color: #FFFFFF;
-            background-color: #FF5722; /* Màu cam nổi bật */
+            background-color: #FF5722; 
             border: none;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.6);
             transition: transform 0.2s, background-color 0.2s;
+            letter-spacing: 0.5px;
         }
 
-        /* Hiệu ứng zoom nhẹ khi di chuột vào nút */
         #start-button:hover {
             background-color: #E64A19;
             transform: scale(1.05);
+        }
+
+        /* ========================================================
+           3. CẤU HÌNH RIÊNG CHO ĐIỆN THOẠI VÀ THIẾT BỊ DI ĐỘNG (Responsive)
+           ======================================================== */
+        @media screen and (max-width: 768px) {
+            #welcome-screen {
+                /* Trên điện thoại: Cho phép ảnh dọc hiển thị to hơn, vừa vặn theo chiều dọc (hoặc dùng cover) */
+                background-size: contain; 
+            }
+            
+            #welcome-title {
+                font-size: 22px; /* Thu nhỏ cỡ chữ một chút trên điện thoại để tránh bị vỡ dòng quá nhiều */
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
+            }
+
+            #start-button {
+                padding: 12px 30px;
+                font-size: 15px; /* Điều chỉnh kích thước nút bấm vừa tay trên màn hình cảm ứng */
+            }
         }
     </style>
 </head>
@@ -87,16 +108,14 @@
 <div id="pano" style="width:100%;height:100%;">
     <noscript><table style="width:100%;height:100%"><tr style="vertical-align:middle"><td><div style="text-align:center">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
     <script>
-        // Hàm xử lý kích hoạt tour khi ấn nút
         function startTour() {
             var welcome = document.getElementById('welcome-screen');
-            welcome.style.opacity = '0'; // Tạo hiệu ứng mờ dần
+            welcome.style.opacity = '0'; 
             
             setTimeout(function() {
-                welcome.style.display = 'none'; // Ẩn hẳn màn hình chờ
+                welcome.style.display = 'none'; 
             }, 500); 
 
-            // Khởi chạy tour 360 độ từ krpano
             embedpano({xml:"tour.xml", target:"pano", passQueryParameters:"startscene,startlookat"});
         }
     </script>
