@@ -5,7 +5,7 @@
 	<plugin name="soundinterface" url="plugins/soundinterface.js" rootpath="" keep="true" preload="true" />
 
 <include url="add_hotspot/plugins_l/add_hotspot.xml" />
-    <!-- <include url="%VIEWER%/add_hotspot/plugins_l/editor/add_hotspot_2.xml"  />  -->
+<!-- <include url="%VIEWER%/add_hotspot/plugins_l/editor/add_hotspot_2.xml"  />  -->
     
     <include url="%FIRSTXML%/add_hotspot/plugins_l/plugin_a/poligon.xml"/>
     <include url="%FIRSTXML%/add_hotspot/plugins_l/plugin_a/vid_hs.xml"/>
@@ -13,6 +13,12 @@
     <include url="%FIRSTXML%/add_hotspot/plugins_l/plugin_a/photo.xml"/>
     <include url="%FIRSTXML%/add_hotspot/plugins_l/plugin_a/youtube.xml"/>
     <include url="%FIRSTXML%/add_hotspot/plugins_l/plugin_a/video.xml"/>
+
+    <!-- Menu -->
+	<include url="menu/plugins/menu_sm.xml" />  
+	<!-- <include url="menu/editor/edit_menu_sm.xml" />  -->
+
+
 	<!-- Âm thanh -->
     
 	<include url="callout_transformer/callout_tr.xml" />  
@@ -23,6 +29,7 @@
         playsound(bgmusic, '%FIRSTXML%/add_hotspot/sound/thanh-hien.wav', 1, 0.5);
     );
 </action> -->
+
 <action name="play_bg_sound">
     if(plugin[soundinterface],
         playsound(voice, '%FIRSTXML%/add_hotspot/sound/thanh-hien.wav', 1, 1.0, 
@@ -96,6 +103,27 @@
 	<!-- view settings -->
 	<view hlookat="0" vlookat="0" fovtype="MFOV" fov="90" fovmin="20" fovmax="120" />
 
+    <include url="plugins/swipe_gallery.xml" />
+
+	<preview type="grid(CUBE,16,16,512,0xCCCCCC,0x666666,0x999999);" />
+
+	<events onresize="make_gallery(get(activeGallery));" />
+
+	<layer name="gallery" type="container" align="center" width="100%" height="100%" alpha="0" autoalpha="true" bgcolor="0x000000" bgalpha="0.8" keep="true">
+		<layer name="gallery_scrollarea" url="%SWFPATH%/plugins/scrollarea.swf" alturl="%SWFPATH%/plugins/scrollarea.js" keep="true" align="left" width="0" height="100%" zorder="1" direction="h" ondown="set(gallery_scrollarea_start_pos, get(x))">
+		</layer>
+		<layer name="arrow_left"  align="left"  x="10" keep="true" visible="false" zorder="2" onclick="move_image(left)" url="img/arrow_left.png"  />
+		<layer name="arrow_right" align="right" x="10" keep="true" visible="false" zorder="2" onclick="move_image(right)" url="img/arrow_right.png" />
+		<layer name="gallery_close" align="righttop" x="10" y="10" keep="true" zorder="2" onclick="hide_gallery()" url="img/close.png" />
+	</layer>
+	
+
+    <action name="open_gallery">
+    show_gallery(%1);
+    </action>
+
+
+
 	<action name="do_crop_animation" scope="local" args="framewidth, frameheight, framerate">
 		<!-- define local variables -->
 		calc(local.xframes, (caller.imagewidth /framewidth) BOR 0);
@@ -140,8 +168,8 @@
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="0.0" vlookat="70.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
+		<!-- <view hlookat="0.0" vlookat="70.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" /> -->
+        <view hlookat="0.0" vlookat="35.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 		<preview url="panos/1.tiles/preview.jpg" />
          
 		<image>
@@ -172,10 +200,19 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 
          <!-- Thêm ảnh các tên -->
         <hotspot name="duong-nguyen-van-cu" url="%FIRSTXML%/add_hotspot/icons/duong-nguyen-van-cu.png"  ath="88.050" atv="38.400" scale="0.133" distorted="true" rotate="-3.80" rotationorder="YXZ"  /> 
-         <hotspot name="pho-dong-lai" url="%FIRSTXML%/add_hotspot/icons/pho-dong-lai.png"  ath="17.300" atv="88.200" scale="0.155" distorted="true" rotate="-18.10" rotationorder="YXZ"  /> 
+         <hotspot name="pho-dong-lai" url="%FIRSTXML%/add_hotspot/icons/pho-dong-lai.png"  ath="17.300" atv="88.200" scale="0.155" distorted="true" rotate="-18.10" rotationorder="YXZ" /> 
         <hotspot name="truong-thanh-hien" url="%FIRSTXML%/add_hotspot/icons/truong-mam-non.png"  ath="-3.850" atv="51.850" scale="0.191" distorted="true" rotate="3.00" rotationorder="YXZ"  /> 
      
+	 	<hotspot name="xem-anh_tren-cao" ready="true" ondown="drag_LinkSM();" width="1756" height="1956" scalez="0.230" rotate="0.70" url="%FIRSTXML%/add_hotspot/photo/xem_anh2.png" scale="0.23" ath="-1.6000" atv="21.6500" distorted="true" rotationorder="YXZ" drag_hs="false" colorize="16777215" brightness="1" contrast="1" saturate="1" hue="0" invert="0" sepia="0" />
 
+		<hotspot name="ngayhoithao_tren-cao" ready="true" ondown="drag_LinkSM();" width="339" height="216" scalez="0.359" rotate="5.4" url="%FIRSTXML%/add_hotspot/icons/nut-bam-trang.png" alpha="0" scale="0.359" ath="-12.2000" atv="25.8500" distorted="true" rotationorder="YXZ" drag_hs="false" colorize="16777215" brightness="1" contrast="1" saturate="1" hue="0" invert="0" sepia="0" onclick="open_gallery(hoithao)" title="Ngày Hội Thao"  />
+      
+	    <hotspot name="rungchuongvang_tren-cao" ready="true" ondown="drag_LinkSM();" width="439" height="216" scalez="0.326" rotate="-3.4" url="%FIRSTXML%/add_hotspot/icons/nut-bam-trang.png" alpha="0.0" scale="0.326" ath="8.6000" atv="26.3000" distorted="true" rotationorder="YXZ" drag_hs="false" colorize="16777215" brightness="1" contrast="1" saturate="1" hue="0" invert="0" sepia="0" onclick="open_gallery(rungchuongvang)" title="Rung Chuông Vàng" />
+
+		<!-- <hotspot name="video1_tren-cao" ready="true" ondown="drag_LinkSM();" width="349" height="216" scalez="0.359" rotate="8.60" url="%FIRSTXML%/add_hotspot/icons/nut-bam-trang.png" alpha="0.66" scale="0.359" ath="-12.8500" atv="36.3000" distorted="true" rotationorder="YXZ" drag_hs="false" colorize="16777215" brightness="1" contrast="1" saturate="1" hue="0" invert="0" sepia="0" /> -->
+      <hotspot name="video1_tren-cao" ready="true" ondown="drag_LinkSM();" width="339" height="216" scalez="0.359" rotate="8.60" url="%FIRSTXML%/add_hotspot/icons/nut-bam-trang.png" alpha="0.0" scale="0.359" ath="-12.8500" atv="36.3000" distorted="true" rotationorder="YXZ" drag_hs="false" colorize="16777215" brightness="1" contrast="1" saturate="1" hue="0" invert="0" sepia="0" onclick="show_video_popup('%FIRSTXML%/add_hotspot/video/Video_TH1.mp4');" />
+
+		<hotspot name="video2_tren-cao" ready="true" ondown="drag_LinkSM();" width="359" height="216" scalez="0.336" rotate="-5.90" url="%FIRSTXML%/add_hotspot/icons/nut-bam-trang.png" alpha="0.0" scale="0.336" ath="9.1500" atv="36.9500" distorted="true" rotationorder="YXZ" drag_hs="false" colorize="16777215" brightness="1" contrast="1" saturate="1" hue="0" invert="0" sepia="0" onclick="show_video_popup('%FIRSTXML%/add_hotspot/video/Video_TH2.mp4');" />
 	</scene>
 
     	<scene name="scene_123" title="123" onstart="" thumburl="panos/123.tiles/thumb.jpg" lat="21.12775669" lng="105.95047600" alt="89.99" heading="0.0">
@@ -264,8 +301,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 	 <hotspot name="Trong-cong_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-178.000" atv="5.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_1234, null, MERGE, BLEND(0.5));"  /> 
      <hotspot name="Vui-choi-1_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-86.550" atv="3.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));"  /> 
      <hotspot name="Vach-dich_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="48.650" atv="1.993" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_9, null, MERGE, BLEND(0.5));" /> 
-   
-	</scene>
+    </scene>
 
 	<scene name="scene_6" title="Khu vui chơi 1" onstart="" thumburl="panos/6.tiles/thumb.jpg" lat="21.12778714" lng="105.95033094" alt="88.34" heading="0.0">
 		
@@ -356,6 +392,105 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
    
 	</scene>
 
-	
+	<hotspot name="li_2" ath="-13.4436" atv="26.6570" line_lenght="180" style="callout" css_title="font-family:roboto; font-size:16px; color:#ffffff;  font-weight:400; text-align:center; padding:4px 8px; border-radius:0px; background-color:#ed4a03;" rotate="360" onclick="open_gallery(hoithao)" title="Ngày Hội Thao"/>
 
+<gallery name="hoithao" title="Ngày Hội Thao">
+		<img name="img1" url="%FIRSTXML%/add_hotspot/photo/Hoithao_TH/1.jpg" title="Ngày Hội Thao" />
+		<img name="img2" url="%FIRSTXML%/add_hotspot/photo/Hoithao_TH/2.jpg" title="Ngày Hội Thao" />
+		<img name="img3" url="%FIRSTXML%/add_hotspot/photo/Hoithao_TH/3.jpg" title="Ngày Hội Thao" />
+		<img name="img4" url="%FIRSTXML%/add_hotspot/photo/Hoithao_TH/4.jpg" title="Ngày Hội Thao" />
+		<img name="img5" url="%FIRSTXML%/add_hotspot/photo/Hoithao_TH/5.jpg" title="Ngày Hội Thao" />
+		<img name="img6" url="%FIRSTXML%/add_hotspot/photo/Hoithao_TH/6.jpg" title="Ngày Hội Thao" />
+		<img name="img7" url="%FIRSTXML%/add_hotspot/photo/Hoithao_TH/7.jpg" title="Ngày Hội Thao" />
+	</gallery>
+    
+	<gallery name="rungchuongvang" title="Rung Chuông Vàng">
+		<img name="img1" url="%FIRSTXML%/add_hotspot/photo/Rungchuongvang_TH/1.jpg" title="Rung Chuông Vàng" />
+		<img name="img2" url="%FIRSTXML%/add_hotspot/photo/Rungchuongvang_TH/2.jpg" title="Rung Chuông Vàng" />
+		<img name="img3" url="%FIRSTXML%/add_hotspot/photo/Rungchuongvang_TH/3.jpg" title="Rung Chuông Vàng" />
+		<img name="img4" url="%FIRSTXML%/add_hotspot/photo/Rungchuongvang_TH/4.jpg" title="Rung Chuông Vàng" />
+		<img name="img5" url="%FIRSTXML%/add_hotspot/photo/Rungchuongvang_TH/5.jpg" title="Rung Chuông Vàng" />
+	</gallery>
+
+	<gallery name="tongket" title="Tổng Kết Năm Học">
+		<img name="img1" url="%FIRSTXML%/add_hotspot/photo/Tongket_TH/1.jpg" title="Tổng Kết Năm Học" />
+		<img name="img2" url="%FIRSTXML%/add_hotspot/photo/Tongket_TH/2.jpg" title="Tổng Kết Năm Học" />
+		<img name="img3" url="%FIRSTXML%/add_hotspot/photo/Tongket_TH/3.jpg" title="Tổng Kết Năm Học" />
+		<img name="img4" url="%FIRSTXML%/add_hotspot/photo/Tongket_TH/4.jpg" title="Tổng Kết Năm Học" />
+
+	</gallery>
+    
+	<!-- <plugin name="video_popup"
+        url.flash="%SWFPATH%/plugins/videoplayer.swf"
+        url.html5="%SWFPATH%/plugins/videoplayer.js"
+        visible="false"
+        keep="true"
+        align="center"
+        width="80%"
+        height="prop"
+        zorder="999"
+        pausedonstart="true"
+        loop="false"
+        onclick="plugin[video_popup].togglepause();"
+/> -->
+     <plugin name="video_popup"
+        url.flash="%SWFPATH%/plugins/videoplayer.swf"
+        url.html5="%SWFPATH%/plugins/videoplayer.js"
+        visible="false"
+        keep="true"
+        align="center"
+        width="80%"
+        height="prop"
+        zorder="999"
+        pausedonstart="true"
+        loop="false"
+        onvideoplay="pausesoundall();"  onclick="plugin[video_popup].togglepause();"
+/>
+<layer name="close_video"
+       type="text"
+       html="X"
+       keep="true"
+       visible="false"
+       align="center"
+       x="38%"
+       y="-24%"
+       width="40"
+       height="40"
+       bgcolor="0x000000"
+       bgalpha="0.7"
+       css="color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:22px; text-align:center; line-height:40px;"
+       zorder="1000"
+       onclick="plugin[video_popup].stop(); set(plugin[video_popup].visible,false); set(layer[close_video].visible,false); resumesoundall();"
+/>
+
+<!-- <action name="show_video_popup">
+    set(plugin[video_popup].visible, true);
+    set(layer[close_video].visible, true);
+    plugin[video_popup].playvideo(%1);
+</action> -->
+<action name="show_video_popup">
+    
+    set(temp_video_url, %1);
+    
+    txtreplace(temp_video_url, '%FIRSTXML%/', get(xml.url));
+    
+    set(plugin[video_popup].visible, true);
+    set(layer[close_video].visible, true);
+    
+    plugin[video_popup].playvideo(get(temp_video_url));
+</action>
+
+<!-- Zoom vào hospot chuyển cảnh -->
+<action name="slow_zoom_and_fade">
+    copy(target_ath, hotspot[%2].ath);
+    copy(target_atv, hotspot[%2].atv);
+
+    tween(view.fov, 100, 1.5, easeInOutQuad);
+    tween(view.hlookat, get(target_ath), 1.5, easeInOutQuad);
+    tween(view.vlookat, get(target_atv), 1.5, easeInOutQuad);
+
+    wait(1.5);
+
+    loadscene(%1, null, MERGE, BLEND(1.0));
+</action>
 </krpano>
