@@ -43,7 +43,7 @@
 
 <action name="play_bg_sound">
     if(plugin[soundinterface],
-        playsound(voice, '%FIRSTXML%/add_hotspot/sound/tieng_chim.mp3', 0, 1.0, 
+        playsound(voice, '%FIRSTXML%/add_hotspot/sound/nhacnen.mp3', 0, 0.1 
             
         );
     );
