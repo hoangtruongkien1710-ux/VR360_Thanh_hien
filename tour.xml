@@ -335,7 +335,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 
 	</scene>
 
-       <scene name="scene_ngoai_cong" title="Cổng trường" onstart="set(view.fov,100);" thumburl="panos/ngoai_cong.tiles/thumb.jpg" lat="21.12768525" lng="105.95056917" alt="35.85" heading="0.0">
+       <scene name="scene_ngoai_cong" title="Cổng trường" onstart="set(view.fov,100;" thumburl="panos/ngoai_cong.tiles/thumb.jpg" lat="21.12768525" lng="105.95056917" alt="35.85" heading="0.0">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -755,13 +755,49 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 
 
 <!-- Hiệu ứng mở scene: zoom thẳng vào rồi fade chuyển cảnh -->
-<action name="zoom_straight_and_fade">
+<!-- <action name="zoom_straight_and_fade">
     tween(view.fov, 100, 1.5, easeInOutQuad);
 
     wait(1.5);
 
     loadscene(%1, view.fov=140, MERGE, BLEND(1.0));
+</action> -->
+
+<action name="zoom_straight_and_fade 2">
+
+    <!-- CẢNH 1: zoom thẳng vào nhanh, không lệch trái/phải -->
+    tween(view.fov, 42, 0.42, easeInCubic);
+
+    wait(0.42);
+
+    <!-- Load cảnh 2 ở trạng thái zoom gần -->
+    loadscene(%1, view.fov=100, MERGE, BLEND(0.6));
+
+    wait(0.05);
+
+    <!-- CẢNH 2: mở ra chậm, mượt -->
+    tween(view.fov, 120, 2.2, easeOutCubic);
+
 </action>
+
+
+<action name="zoom_straight_and_fade">
+
+    <!-- CẢNH 1: zoom thẳng vào nhanh -->
+    tween(view.fov, 42, 0.42, easeInCubic);
+
+    wait(0.42);
+
+    <!-- CẢNH 2: mở ra ở góc nhìn rộng, để cảm giác nối tiếp cảnh 1 -->
+    loadscene(%1, view.fov=110, MERGE, BLEND(0.55));
+
+    wait(0.05);
+
+    <!-- CẢNH 2: tiếp tục zoom vào nhẹ, không bung từ gần ra xa -->
+    tween(view.fov, 110, 1.6, easeOutCubic);
+
+</action>
+
 
  
 
