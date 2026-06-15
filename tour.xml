@@ -16,8 +16,8 @@
     <include url="%FIRSTXML%/add_hotspot/plugins_l/plugin_a/video.xml"/>
 
     <!-- Menu -->
-	<!-- <include url="menu/plugins/menu_sm.xml" />   -->
-	<!-- <include url="menu/editor/edit_menu_sm.xml" />  -->
+	<!-- <include url="menu/plugins/menu_sm.xml" />   
+	 <include url="menu/editor/edit_menu_sm.xml" /> -->
 
 
 	<!-- Âm thanh -->
@@ -293,7 +293,7 @@
 			<cube url="panos/1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
 
-		<hotspot name="Trên cao 2" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-8.350" atv="61.993" scale="0.7" distorted="true" rotate="9.20" rotationorder="YXZ" onclick="loadscene(scene_123, null, MERGE, BLEND(0.5));" /> 
+		<hotspot name="Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-8.350" atv="61.993" scale="0.7" distorted="true" rotate="9.20" rotationorder="YXZ" onclick="loadscene(scene_ngoai_cong, null, MERGE, BLEND(0.5));" /> 
         
 	    <!--*** callout_transformer ***-->
 		<!-- <hotspot name="thpt_tu-son" style="pit_hs_inf" ath="39.4775" atv="58.7963" pit_color="0x0022ff" pit_border="1,1,1,1 0xffffff 1.0" l_1="49" l_2="54" rotate_1="-60" rotate_2="60" tox="-28" toy="-13" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" t_txtshadow="1 1 2 0x000000 0.6" l_color="0xffffff" title="Trường THPT Từ Sơn" /> 
@@ -335,66 +335,47 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 
 	</scene>
 
-    	<scene name="scene_123" title="Ngoài cổng" onstart="" thumburl="panos/123.tiles/thumb.jpg" lat="21.12775669" lng="105.95047600" alt="89.99" heading="0.0">
+       <scene name="scene_ngoai_cong" title="ngoai_cong" onstart="" thumburl="panos/ngoai_cong.tiles/thumb.jpg" lat="21.12768525" lng="105.95056917" alt="35.85" heading="0.0">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140" maxpixelzoom="2.0" fovmin="70" fovmax="180" limitview="auto" />
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="panos/123.tiles/preview.jpg" />
+		<preview url="panos/ngoai_cong.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/123.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/ngoai_cong.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
-      <hotspot name="Trong-cong_Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="3.250" atv="16.243" scale="1" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_1234, null, MERGE, BLEND(0.5));"  /> 
-         <hotspot name="Len-cao_Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/maybay.png"  ath="19.800" atv="-42.450" scale="0.09" distorted="true" rotate="7.30" rotationorder="YXZ" onclick="loadscene(scene_1, null, MERGE, BLEND(0.5));"  /> 
-        <hotspot name="mui-ten-2" url="%FIRSTXML%/add_hotspot/icons/mui-ten.png"  ath="20" atv="-45.200" scale="0.05" distorted="true" rotate="-0.10" rotationorder="YXZ"   />
-	    
-      <!-- <hotspot name="Test_vontron_Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/vong_tron.png" onloaded="do_crop_animation_cham(64,64, 10);" ath="13.250" atv="16.243" scale="1" distorted="true" rotate="-1" rotationorder="YXZ"  /> 
-       -->
-        <!-- <hotspot name="hotspot_tien_len_1" 
-         url="%FIRSTXML%/add_hotspot/icons/mui_ten_xanh.png" 
-         ath="0" atv="50" 
-         distorted="true" rx="-70"
-         onloaded="flow_arrow_anim();" 
-         onclick="loadscene(scene_tiep_theo, null, MERGE, BLEND(0.5));" />
 
-      <hotspot name="hotspot_tien_len_2" 
-         url="%FIRSTXML%/add_hotspot/icons/mui_ten_xanh.png" 
-         ath="0" atv="55" 
-         distorted="true" rx="-70"
-         onloaded="delayedcall(0.6, flow_arrow_anim() );" 
-         onclick="loadscene(scene_tiep_theo, null, MERGE, BLEND(0.5));" /> -->
+         <hotspot name="Trong-cong_Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-0.050" atv="7.093" scale="0.498" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_1234, null, MERGE, BLEND(0.5));"  /> 
+        
+        <hotspot name="video-nenxanh" 
+         url.html5="%FIRSTXML%/plugins/videoplayer.js"
+         videourl="%FIRSTXML%/add_hotspot/video/ngoai_cong.mp4" 
+         ondown="drag_LinkSM();" 
+         width="1080" 
+         height="1920" 
+         scale="0.142" 
+         ath="16.250" 
+         atv="8.000" 
+         distorted="true" 
+         renderer="webgl"
+         chromakey="0x4CB969|0.350|0.080"
+         use_as_videolayer="true" 
+         loop="true" 
+         pausedonstart="false" 
+         autoplay="voicetouch"
+         iphone="true"
+         playsinline="true"
+         directionalsound="true" 
+         use_as_soundsource="true"
+         range="60"
+         range_volume="0.0"
+         drag_hs="false"
+         />
+        </scene>
 
-          <!-- <hotspot name="hotspot_truot_1" 
-         url="%FIRSTXML%/add_hotspot/icons/mui_ten_xanh.png" 
-         ath="0" atv="50" distorted="true" rx="-70"
-         onloaded="flow_smooth_anim();" 
-         onclick="loadscene(scene_tiep_theo, null, MERGE, BLEND(0.5));" />
-
-<hotspot name="hotspot_truot_2" 
-         url="%FIRSTXML%/add_hotspot/icons/mui_ten_xanh.png" 
-         ath="0" atv="55" distorted="true" rx="-70"
-         onloaded="delayedcall(1.0, flow_smooth_anim() );" 
-         onclick="loadscene(scene_tiep_theo, null, MERGE, BLEND(0.5));" /> -->
- 
-          <!-- <hotspot name="hotspot_gon_song_1" 
-         url="%FIRSTXML%/add_hotspot/icons/mui_ten_xanh.png" 
-         ath="0" atv="50" distorted="true" rx="-70" 
-         scale="0.25" alpha="0.9"
-         oy="0" oy_base="0" 
-         onloaded="wave_ripple_anim();" 
-         onclick="loadscene(scene_tiep_theo, null, MERGE, BLEND(0.5));" />
-
-<hotspot name="hotspot_gon_song_2" 
-         url="%FIRSTXML%/add_hotspot/icons/mui_ten_xanh.png" 
-         ath="0" atv="55" distorted="true" rx="-70" 
-         scale="0.25" alpha="0.9"
-         oy="-15" oy_base="-15" 
-         onloaded="delayedcall(0.2, wave_ripple_anim() );" 
-         onclick="loadscene(scene_tiep_theo, null, MERGE, BLEND(0.5));" /> -->
-
-	</scene>
+	
 
 	
     	<scene name="scene_1234" title="Trong cổng" onstart="" thumburl="panos/1234.tiles/thumb.jpg" lat="21.12780531" lng="105.95044308" alt="88.89" heading="0.0">
@@ -410,7 +391,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		</image>
         <hotspot name="San-giua_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="0.500" atv="5.543" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_5, null, MERGE, BLEND(0.5));"  /> 
           
-	   <hotspot name="Ngoai-cong_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-175.950" atv="10.193" scale="0.7" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_123, null, MERGE, BLEND(0.5));"  /> 
+	   <hotspot name="Ngoai-cong_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-175.950" atv="10.193" scale="0.7" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_ngoai_cong, null, MERGE, BLEND(0.5));"  /> 
      
 	     <hotspot name="San-choi-1_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-46.200" atv="5.143" scale="0.234" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));"  /> 
 
@@ -420,14 +401,14 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
          ondown="drag_LinkSM();" 
          width="1080" 
          height="1920" 
-         scale="0.223" 
+         scale="0.18" 
          ath="65.9500" 
          atv="8.000" 
          distorted="true" 
          renderer="webgl"
          chromakey="0x4CB969|0.350|0.080"
          use_as_videolayer="true" 
-         loop="false" 
+         loop="true" 
          pausedonstart="false" 
          autoplay="voicetouch"
          iphone="true"
@@ -508,7 +489,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
          renderer="webgl"
          chromakey="0x4CB969|0.350|0.080"
          use_as_videolayer="true" 
-         loop="false" 
+         loop="true" 
          pausedonstart="false" 
          autoplay="voicetouch"
          iphone="true"
