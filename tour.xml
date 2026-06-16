@@ -293,7 +293,7 @@
 			<cube url="panos/1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
 
-		<hotspot name="Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-8.350" atv="61.993" scale="0.7" distorted="true" rotate="9.20" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_ngoai_cong);" /> 
+		<hotspot name="Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-8.350" atv="61.993" scale="0.7" distorted="true" rotate="9.20" rotationorder="YXZ" onclick="loadscene(scene_ngoai_cong, null, MERGE, BLEND(0.5));" /> 
         
 	    <!--*** callout_transformer ***-->
 		<!-- <hotspot name="thpt_tu-son" style="pit_hs_inf" ath="39.4775" atv="58.7963" pit_color="0x0022ff" pit_border="1,1,1,1 0xffffff 1.0" l_1="49" l_2="54" rotate_1="-60" rotate_2="60" tox="-28" toy="-13" t_bgalpha="0" t_bgborder="0,0,0,0 0xffffff 0.0" t_bgshadow="4 4 10 0x000000 0.00" t_txtshadow="1 1 2 0x000000 0.6" l_color="0xffffff" title="Trường THPT Từ Sơn" /> 
@@ -335,45 +335,56 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 
 	</scene>
 
-       <scene name="scene_ngoai_cong" title="Cổng trường" onstart="set(view.fov,100;" thumburl="panos/ngoai_cong.tiles/thumb.jpg" lat="21.12768525" lng="105.95056917" alt="35.85" heading="0.0">
+     <scene name="scene_ngoai_cong" title="Cổng trường" onstart="" thumburl="panos/ngoai_cong.tiles/thumb.jpg" lat="21.12768525" lng="105.95056917" alt="35.85" heading="0.0">
 		
-		<control bouncinglimits="calc:image.cube ? true : false" />
+    <control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="3.0" vlookat="0.0" fovtype="MFOV" fov="100" maxpixelzoom="2.0" fovmin="40" fovmax="180" limitview="auto" />
+    <view hlookat="3.0" vlookat="0.0" fovtype="MFOV" fov="100" maxpixelzoom="2.0" fovmin="40" fovmax="180" limitview="auto" />
 
-		<preview url="panos/ngoai_cong.tiles/preview.jpg" />
+    <preview url="panos/ngoai_cong.tiles/preview.jpg" />
 
-		<image>
-			<cube url="panos/ngoai_cong.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
-		</image>
+    <image>
+        <cube url="panos/ngoai_cong.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+    </image>
 
-         <hotspot name="Trong-cong_Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-0.050" atv="7.093" scale="0.498" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_1234);" /> 
+    <hotspot name="Trong-cong_Ngoai-cong"
+        url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png"
+        onloaded="do_crop_animation(128,128,7);"
+        ath="-0.050"
+        atv="7.093"
+        scale="0.498"
+        distorted="true"
+        rotate="-1"
+        rotationorder="YXZ"
+        onclick="loadscene(scene_1234, null, MERGE, BLEND(0.5));"
+    /> 
         
-        <hotspot name="video-nenxanh" 
-         url.html5="%FIRSTXML%/plugins/videoplayer.js"
-         videourl="%FIRSTXML%/add_hotspot/video/ngoai_cong.mp4" 
-         ondown="drag_LinkSM();" 
-         width="1080" 
-         height="1920" 
-         scale="0.142" 
-         ath="16.250" 
-         atv="8.000" 
-         distorted="true" 
-         renderer="webgl"
-         chromakey="0x4CB969|0.350|0.080"
-         use_as_videolayer="true" 
-         loop="true" 
-         pausedonstart="false" 
-         autoplay="voicetouch"
-         iphone="true"
-         playsinline="true"
-         directionalsound="true" 
-         use_as_soundsource="true"
-         range="60"
-         range_volume="0.0"
-         drag_hs="false"
-         />
-        </scene>
+    <hotspot name="video-nenxanh" 
+        url.html5="%FIRSTXML%/plugins/videoplayer.js"
+        videourl="%FIRSTXML%/add_hotspot/video/ngoai_cong.mp4" 
+        ondown="drag_LinkSM();" 
+        width="1080" 
+        height="1920" 
+        scale="0.142" 
+        ath="16.250" 
+        atv="8.000" 
+        distorted="true" 
+        renderer="webgl"
+        chromakey="0x4CB969|0.350|0.080"
+        use_as_videolayer="true" 
+        loop="true" 
+        pausedonstart="false" 
+        autoplay="voicetouch"
+        iphone="true"
+        playsinline="true"
+        directionalsound="true" 
+        use_as_soundsource="true"
+        range="60"
+        range_volume="0.0"
+        drag_hs="false"
+    />
+
+</scene>
 
 	
 
@@ -389,11 +400,11 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		<image>
 			<cube url="panos/1234.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
-        <hotspot name="San-giua_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="0.500" atv="5.543" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_5);" /> 
+        <hotspot name="San-giua_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="0.500" atv="5.543" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_5, null, MERGE, BLEND(0.5));" /> 
           
-	   <hotspot name="Ngoai-cong_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-175.950" atv="10.193" scale="0.7" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_ngoai_cong);" /> 
+	   <hotspot name="Ngoai-cong_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-175.950" atv="10.193" scale="0.7" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_ngoai_cong, null, MERGE, BLEND(0.5));" /> 
      
-	     <hotspot name="San-choi-1_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-46.200" atv="5.143" scale="0.234" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_6);" /> 
+	     <hotspot name="San-choi-1_Trong-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-46.200" atv="5.143" scale="0.234" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));" /> 
 
       <hotspot name="video-nenxanh" 
          url.html5="%FIRSTXML%/plugins/videoplayer.js"
@@ -434,12 +445,12 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 			<cube url="panos/5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
      
-	 <hotspot name="Trong-cong_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-178.000" atv="5.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_1234);" /> 
-     <hotspot name="Vui-choi-1_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" zorder="99" ath="-86.550" atv="3.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_6);" /> 
-     <hotspot name="Vach-dich_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="48.650" atv="1.993" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_9);" /> 
+	 <hotspot name="Trong-cong_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-178.000" atv="5.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_1234, null, MERGE, BLEND(0.5));" /> 
+     <hotspot name="Vui-choi-1_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" zorder="99" ath="-86.550" atv="3.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));" /> 
+     <hotspot name="Vach-dich_San-giua" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="48.650" atv="1.993" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_9, null, MERGE, BLEND(0.5));" /> 
    
-     <hotspot name="LHT1" style="hs_circle" ath="-21.250" atv="-7.200" tag="Lớp_học T1" scale="0.251" onclick="zoom_straight_and_fade(scene_lop_t1);" />
-	 <hotspot name="LHT2" style="hs_circle" ath="10.750" atv="-25.350" tag="Lớp_học T2" scale="0.2" onclick="zoom_straight_and_fade(scene_lop_t2);" />
+     <hotspot name="LHT1" style="hs_circle" ath="-21.250" atv="-7.200" tag="Lớp_học T1" scale="0.251" onclick="loadscene(scene_lop_t1, null, MERGE, BLEND(0.5));" />
+	 <hotspot name="LHT2" style="hs_circle" ath="10.750" atv="-25.350" tag="Lớp_học T2" scale="0.2" onclick="loadscene(scene_lop_t2, null, MERGE, BLEND(0.5));" />
         
 		<hotspot name="anh-nutbam_giuasan" ready="true" ondown="drag_LinkSM();" width="1188" height="1324" scalez="0.330" ox="369.50" rotate="-3.10" url="%FIRSTXML%/add_hotspot/picture/anh_nutbam.png" scale="0.33" ath="-88.3000" atv="8.5500" distorted="true" rotationorder="YXZ" rx="3.58" drag_hs="false" colorize="16777215" brightness="1" contrast="1" saturate="1" hue="0" invert="0" sepia="0" />
 
@@ -515,9 +526,9 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 			<cube url="panos/6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
 
-       <hotspot name="San-giua-choi-1" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-175.300" atv="2.243" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_5);" /> 
-     <hotspot name="Vui-choi-2_Vui-choi-1" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="9.300" atv="8.793" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_7);" /> 
-      <hotspot name="Vach-xuat-phat_Vui-choi-1" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="85.650" atv="2.443 " scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_10);" /> 
+       <hotspot name="San-giua-choi-1" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-175.300" atv="2.243" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_5, null, MERGE, BLEND(0.5));" /> 
+     <hotspot name="Vui-choi-2_Vui-choi-1" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="9.300" atv="8.793" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_7, null, MERGE, BLEND(0.5));" /> 
+      <hotspot name="Vach-xuat-phat_Vui-choi-1" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="85.650" atv="2.443 " scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_10, null, MERGE, BLEND(0.5));" /> 
    
         <!-- <hotspot name="Len-cao_Vui-choi-1" url="%FIRSTXML%/add_hotspot/icons/maybay.png"  ath="19.800" atv="-25.850" scale="0.049" distorted="true" rotate="-0.10" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_1);" /> 
         -->
@@ -529,12 +540,12 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
          distorted="true" 
          rotate="-0.10" rotationorder="YXZ" 
          onloaded="add_universal_ripple('%FIRSTXML%/add_hotspot/icons/hs_circle.png', 0.15);" 
-         onclick="zoom_straight_and_fade(scene_1);" />
+         onclick="loadscene(scene_1, null, MERGE, BLEND(0.5));" />
 
 
 	    <hotspot name="mui-ten" url="%FIRSTXML%/add_hotspot/icons/mui-ten.png"  ath="20" atv="-27.500" scale="0.025" distorted="true" rotate="-0.10" rotationorder="YXZ"   /> 
-    <hotspot name="LHT1" style="hs_circle" ath="120.650" atv="-3.850" tag="Lớp_học T1" scale="0.25" onclick="zoom_straight_and_fade(scene_lop_t1);" />
-	 <hotspot name="LHT2" style="hs_circle" ath="95.150" atv="-25.200" tag="Lớp_học T2" scale="0.25" onclick="zoom_straight_and_fade(scene_lop_t2);" />
+    <hotspot name="LHT1" style="hs_circle" ath="120.650" atv="-3.850" tag="Lớp_học T1" scale="0.25" onclick="loadscene(scene_lop_t1, null, MERGE, BLEND(0.5));" />
+	 <hotspot name="LHT2" style="hs_circle" ath="95.150" atv="-25.200" tag="Lớp_học T2" scale="0.25" onclick="loadscene(scene_lop_t2, null, MERGE, BLEND(0.5));" />
 	</scene>
 
 	<scene name="scene_7" title="Khu vui chơi 2" onstart="" thumburl="panos/7.tiles/thumb.jpg" lat="21.12775400" lng="105.95026950" alt="88.34" heading="0.0">
@@ -548,12 +559,12 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		<image>
 			<cube url="panos/7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
-         <hotspot name="Vui-choi-1_Vuichoi-2" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="46.650" atv="7.693" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_6);" /> 
-         <hotspot name="Vui-choi-3_Vui-choi-2" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="135.400" atv="5.793" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_8);" /> 
-          <hotspot name="Vach-xuat-phat_Vui-choi-2" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-3.400" atv="3.293" scale="0.3" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_10);" /> 
+         <hotspot name="Vui-choi-1_Vuichoi-2" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="46.650" atv="7.693" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));" /> 
+         <hotspot name="Vui-choi-3_Vui-choi-2" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="135.400" atv="5.793" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_8, null, MERGE, BLEND(0.5));" /> 
+          <hotspot name="Vach-xuat-phat_Vui-choi-2" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-3.400" atv="3.293" scale="0.3" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_10, null, MERGE, BLEND(0.5));" /> 
     
-     <hotspot name="LHT1" style="hs_circle" ath="4.250" atv="-2.250" tag="Lớp_học T1" scale="0.25" onclick="zoom_straight_and_fade(scene_lop_t1);" />
-	 <hotspot name="LHT2" style="hs_circle" ath="-18.650" atv="-20.450" tag="Lớp_học T2" scale="0.25" onclick="zoom_straight_and_fade(scene_lop_t2);" />
+     <hotspot name="LHT1" style="hs_circle" ath="4.250" atv="-2.250" tag="Lớp_học T1" scale="0.25" onclick="loadscene(scene_lop_t1, null, MERGE, BLEND(0.5));" />
+	 <hotspot name="LHT2" style="hs_circle" ath="-18.650" atv="-20.450" tag="Lớp_học T2" scale="0.25" onclick="loadscene(scene_lop_t2, null, MERGE, BLEND(0.5));" />
 
 	</scene>
 
@@ -568,11 +579,11 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		<image>
 			<cube url="panos/8.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
-        <hotspot name="Trong-cong_vui-choi-3" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="6.950" atv="5.293" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_4);" /> 
-         <hotspot name="Vui-choi-2_Vui-choi-3" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-87.250" atv="12.243" scale="0.7" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_7);" /> 
-         <hotspot name="San-giua_Vui-choi-3" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-25.100" atv="4.443" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_5);" /> 
+        <hotspot name="Trong-cong_vui-choi-3" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="6.950" atv="5.293" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_4, null, MERGE, BLEND(0.5));" /> 
+         <hotspot name="Vui-choi-2_Vui-choi-3" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-87.250" atv="12.243" scale="0.7" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_7, null, MERGE, BLEND(0.5));" /> 
+         <hotspot name="San-giua_Vui-choi-3" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-25.100" atv="4.443" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_5, null, MERGE, BLEND(0.5));" /> 
       
-        <hotspot name="LHT2" style="hs_circle" ath="-76.500" atv="-10.550" tag="Lớp_học T2" scale="0.25" onclick="zoom_straight_and_fade(scene_lop_t2);" />
+        <hotspot name="LHT2" style="hs_circle" ath="-76.500" atv="-10.550" tag="Lớp_học T2" scale="0.25" onclick="loadscene(scene_lop_t2, null, MERGE, BLEND(0.5));" />
 
 	</scene>
 
@@ -587,8 +598,8 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		<image>
 			<cube url="panos/9.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
-       <hotspot name="Vach-xuat-phat_Vach-dich" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-177.150" atv="0.393" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_10);" /> 
-         <hotspot name="San-giua_Vach-dich" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="143.250" atv="2.793" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_5);" /> 
+       <hotspot name="Vach-xuat-phat_Vach-dich" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-177.150" atv="0.393" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_10, null, MERGE, BLEND(0.5));" /> 
+         <hotspot name="San-giua_Vach-dich" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="143.250" atv="2.793" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_5, null, MERGE, BLEND(0.5));" /> 
    
 	</scene>
 
@@ -603,11 +614,11 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		<image>
 			<cube url="panos/10.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
-        <hotspot name="Vach-dich_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-179.000" atv="-0.257" scale="0.3" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_9);" /> 
-         <hotspot name="Vui-choi-1_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-102.500" atv="4.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_6);" /> 
-         <hotspot name="San-giua_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-143.600" atv="2.643" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_5);" /> 
-        <hotspot name="LH-T1_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce();" ath="136.100" atv="13.493" scale="0.446" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_lop_t1);" /> 
-         <hotspot name="Len-T2_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce();" ath="21.350" atv="6.693" scale="0.246" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_hl_t2);" /> 
+        <hotspot name="Vach-dich_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-179.000" atv="-0.257" scale="0.3" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_9, null, MERGE, BLEND(0.5));" /> 
+         <hotspot name="Vui-choi-1_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-102.500" atv="4.843" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_6, null, MERGE, BLEND(0.5));" /> 
+         <hotspot name="San-giua_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-143.600" atv="2.643" scale="0.4" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_5, null, MERGE, BLEND(0.5));" /> 
+        <hotspot name="LH-T1_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce();" ath="136.100" atv="13.493" scale="0.446" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_lop_t1, null, MERGE, BLEND(0.5));" /> 
+         <hotspot name="Len-T2_Vach-xuat-phat" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce();" ath="21.350" atv="6.693" scale="0.246" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_hl_t2, null, MERGE, BLEND(0.5));" /> 
     
 	</scene>
 
@@ -622,11 +633,11 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		<image>
 			<cube url="panos/HL_T2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
-         <hotspot name="LH-T2_Hành-lang-T2" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce();" ath="-152.600" atv="21.843" scale="0.296" distorted="true" rotate="42.4" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_lop_t2);" /> 
-        <hotspot name="Len-cao_Hanh-lang-T2" url="%FIRSTXML%/add_hotspot/icons/maybay.png"  ath="128.100" atv="-36.700" scale="0.067" distorted="true" rotate="14.40" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_1);" /> 
+         <hotspot name="LH-T2_Hành-lang-T2" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce();" ath="-152.600" atv="21.843" scale="0.296" distorted="true" rotate="42.4" rotationorder="YXZ" onclick="loadscene(scene_lop_t2, null, MERGE, BLEND(0.5));" /> 
+        <hotspot name="Len-cao_Hanh-lang-T2" url="%FIRSTXML%/add_hotspot/icons/maybay.png"  ath="128.100" atv="-36.700" scale="0.067" distorted="true" rotate="14.40" rotationorder="YXZ" onclick="loadscene(scene_1, null, MERGE, BLEND(0.5));" /> 
         <hotspot name="mui-ten-hl-t2" ready="true" ondown="drag_LinkSM();" width="360" height="640" scalez="0.025" rotate="15.20" url="%FIRSTXML%/add_hotspot/icons/mui-ten.png" scale="0.025" ath="128.7000" atv="-38.5000" distorted="true" rotationorder="YXZ" drag_hs="false" colorize="16777215" brightness="1" contrast="1" saturate="1" hue="0" invert="0" sepia="0" />
-	    <hotspot name="Vuichoi3" style="hs_circle" ath="130.000" atv="3.850" tag="Khu vui chơi" scale="0.329" onclick="zoom_straight_and_fade(scene_8);" />
-        <hotspot name="xuong-t1_hl-t2" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce_2();" ath="-164.400" atv="7.993" scale="0.024" distorted="true" rotate="-1" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_10);" /> 
+	    <hotspot name="Vuichoi3" style="hs_circle" ath="130.000" atv="3.850" tag="Khu vui chơi" scale="0.329" onclick="loadscene(scene_8, null, MERGE, BLEND(0.5));" />
+        <hotspot name="xuong-t1_hl-t2" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce_2();" ath="-164.400" atv="7.993" scale="0.024" distorted="true" rotate="-1" rotationorder="YXZ" onclick="loadscene(scene_10, null, MERGE, BLEND(0.5));" /> 
     
 	
 	</scene>
@@ -642,7 +653,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 		<image>
 			<cube url="panos/Lop_T1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
 		</image>
-          <hotspot name="Hành-lang-T1_LH-T1" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce();" ath="-0.950" atv="24.043" scale="0.385" distorted="true" rotate="34.40" rotationorder="YXZ" onclick="zoom_straight_and_fade(scene_10);" /> 
+          <hotspot name="Hành-lang-T1_LH-T1" url="%FIRSTXML%/add_hotspot/icons/arrov.png" onloaded="animate_arrow_bounce();" ath="-0.950" atv="24.043" scale="0.385" distorted="true" rotate="34.40" rotationorder="YXZ" onclick="loadscene(scene_10, null, MERGE, BLEND(0.5));" /> 
     
 	</scene>
 
@@ -763,7 +774,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
     loadscene(%1, view.fov=140, MERGE, BLEND(1.0));
 </action> -->
 
-<action name="zoom_straight_and_fade 2">
+<action name="zoom_straight_and_fade">
 
     <!-- CẢNH 1: zoom thẳng vào nhanh, không lệch trái/phải -->
     tween(view.fov, 42, 0.42, easeInCubic);
@@ -781,22 +792,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 </action>
 
 
-<action name="zoom_straight_and_fade">
 
-    <!-- CẢNH 1: zoom thẳng vào nhanh -->
-    tween(view.fov, 42, 0.42, easeInCubic);
-
-    wait(0.42);
-
-    <!-- CẢNH 2: mở ra ở góc nhìn rộng, để cảm giác nối tiếp cảnh 1 -->
-    loadscene(%1, view.fov=110, MERGE, BLEND(0.55));
-
-    wait(0.05);
-
-    <!-- CẢNH 2: tiếp tục zoom vào nhẹ, không bung từ gần ra xa -->
-    tween(view.fov, 110, 1.6, easeOutCubic);
-
-</action>
 
 
  
