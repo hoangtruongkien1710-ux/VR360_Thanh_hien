@@ -3,7 +3,7 @@
 <!-- onstart="play_bg_sound();" -->
 	<!-- <include url="FloorPlan/xml/floorplan_SM.xml"/> -->
 	<include url="skin/vtourskin.xml" />
-	<plugin name="soundinterface" url="plugins/soundinterface.js" rootpath="" keep="true" preload="true" />
+	<plugin name="soundinterface" url="plugins/soundinterface.js" rootpath="" keep="true" preload="false" />
 
 <include url="add_hotspot/plugins_l/add_hotspot.xml" />
 <!-- <include url="%VIEWER%/add_hotspot/plugins_l/editor/add_hotspot_2.xml"  />  -->
@@ -42,9 +42,12 @@
 </action> -->
 
 <action name="play_bg_sound">
-    if(plugin[soundinterface],
-        playsound(voice, '%FIRSTXML%/add_hotspot/sound/nhacnen.mp3', 0, 0.1 
-            
+    delayedcall(0.5,
+        if(plugin[soundinterface],
+            playsound(bgmusic, 'add_hotspot/sound/nhacnen.mp3', 1, 0.25);
+            trace("AM THANH: Da phat nhac nen");
+          ,
+            trace("AM THANH: Khong tim thay plugin soundinterface");
         );
     );
 </action>
@@ -300,7 +303,7 @@
 		<preview url="panos/1.tiles/preview.jpg" />
          
 		<image>
-			<cube url="panos/1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 		<hotspot name="Ngoai-cong" url="%FIRSTXML%/add_hotspot/icons/icon_vi_tri_2.png" onloaded="do_crop_animation(128,128,7);" ath="-8.350" atv="61.993" scale="0.7" distorted="true" rotate="9.20" rotationorder="YXZ" onclick="open_scene2_beautiful(scene_ngoai_cong);" /> 
@@ -790,6 +793,9 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
     set(layer[intro_ui].visible, true);
     set(layer[intro_ui].alpha, 0);
 
+    <!-- Bật nhạc nền khi intro bắt đầu -->
+    play_bg_sound();
+
     <!-- Fade toàn bộ UI vào -->
     tween(layer[intro_ui].alpha, 1, 0.8, easeOutQuad);
 
@@ -878,20 +884,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
     stoptween(view.hlookat);
     stoptween(view.vlookat);
 
-    <!-- Tạo lớp phủ trắng để che scene 1 ngay lập tức -->
-    removelayer(scene_open_cover);
-    addlayer(scene_open_cover);
-
-    set(layer[scene_open_cover].type, container);
-    set(layer[scene_open_cover].keep, true);
-    set(layer[scene_open_cover].align, center);
-    set(layer[scene_open_cover].width, 100%);
-    set(layer[scene_open_cover].height, 100%);
-    set(layer[scene_open_cover].bgcolor, 0xFFFFFF);
-    set(layer[scene_open_cover].bgalpha, 1.0);
-    set(layer[scene_open_cover].alpha, 1.0);
-    set(layer[scene_open_cover].enabled, false);
-    set(layer[scene_open_cover].zorder, 99999);
+ 
 
     <!-- Load scene 2 gần như ngay lập tức, scene 1 không có hiệu ứng -->
     loadscene(get(scenename), null, MERGE, BLEND(0.05));
