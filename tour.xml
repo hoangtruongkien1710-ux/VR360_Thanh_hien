@@ -60,6 +60,14 @@
 	<!-- startup action - load the first scene -->
 	<action name="startup" autorun="onstart">
 		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+
+		<!-- Chỉ cho scene_1 chạy intro_high_start đúng 1 lần khi tour vừa load lần đầu. -->
+		if(startscene == scene_1,
+			set(scene_1_allow_intro_once, true);
+		  ,
+			set(scene_1_allow_intro_once, false);
+		);
+
 		loadscene(get(startscene), null, MERGE);
 		if(startactions !== null, startactions() );
 	</action> 
@@ -284,7 +292,7 @@
     );
 </action>
 
-		<scene name="scene_1" title="View Flycam" onstart="intro_high_start();" thumburl="panos/1.tiles/thumb.jpg" lat="21.12724886" lng="105.95087492" alt="305.29" heading="0.0">
+		<scene name="scene_1" title="View Flycam" onstart="scene_1_onstart();" thumburl="panos/1.tiles/thumb.jpg" lat="21.12724886" lng="105.95087492" alt="305.29" heading="0.0">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -788,6 +796,84 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 
 <!-- ================= ACTION INTRO TRÊN CAO ================= -->
 
+<!--
+    scene_1 là View Flycam.
+    Lần đầu mở tour: chạy intro_high_start để có màn hình giới thiệu trên cao.
+    Sau khi người dùng đã bấm "Khám phá ngay": mọi lần quay lại scene_1 từ menu Cảnh / thumbnail / hotspot
+    sẽ dùng đúng view sau intro, không quay lại FOV little-planet nữa.
+-->
+<action name="scene_1_onstart">
+    if(scene_1_allow_intro_once == true,
+        set(scene_1_allow_intro_once, false);
+        intro_high_start();
+      ,
+        set(intro_tour_started, true);
+        viewflycam_after_intro();
+    );
+</action>
+
+<action name="viewflycam_after_intro">
+
+    set(is_scene_opening, false);
+    stop_scene_right_rotate();
+
+    <!-- Ẩn UI intro XML nếu đang còn tồn tại -->
+    set(layer[intro_ui].alpha, 0);
+    set(layer[intro_ui].visible, false);
+
+    <!-- Dừng mọi tween cũ để FOV không bị ăn theo scene/action trước -->
+    stoptween(view.hlookat);
+    stoptween(view.vlookat);
+    stoptween(view.fov);
+    stoptween(view.fisheye);
+
+    <!-- View chuẩn giống trạng thái sau khi bấm "Khám phá ngay" -->
+    set(view.fovtype, MFOV);
+    set(view.hlookat, 0.0);
+    set(view.vlookat, 35.0);
+    set(view.fov, 140);
+    set(view.fisheye, 0.0);
+    set(view.stereographic, false);
+    set(view.limitview, auto);
+
+</action>
+
+<!--
+    Dùng cho thumbnail View Flycam trong menu Cảnh.
+    Action này cho View Flycam chạy y hệt nút HTML "Cảnh đầu tiên".
+-->
+<action name="open_viewflycam_like_first">
+    set(scene_1_allow_intro_once, false);
+    set(intro_tour_started, true);
+    set(is_scene_opening, false);
+    stop_scene_right_rotate();
+
+    stoptween(view.fov);
+    stoptween(view.hlookat);
+    stoptween(view.vlookat);
+
+    loadscene(scene_1, view.hlookat=0.0&amp;view.vlookat=35.0&amp;view.fov=140&amp;view.fisheye=0.0&amp;view.stereographic=false&amp;view.limitview=auto, MERGE, BLEND(0.5));
+
+    delayedcall(0.12, viewflycam_after_intro(););
+    delayedcall(0.38, viewflycam_after_intro(););
+</action>
+
+<!--
+    Ghi đè skin_loadscene của vtourskin để khi bấm thumbnail "View Flycam" trong menu Cảnh,
+    nó không dùng loadscene mặc định nữa mà gọi open_viewflycam_like_first().
+-->
+<action name="skin_loadscene" scope="local" args="newscene, blendmode">
+    if(newscene == scene_1,
+        open_viewflycam_like_first();
+      ,
+        if(skin_settings.loadscene_flags == null, set(skin_settings.loadscene_flags, MERGE););
+        if(blendmode == null, copy(blendmode, skin_settings.loadscene_blend););
+        loadscene(get(newscene), null, get(skin_settings.loadscene_flags), get(blendmode));
+    );
+
+    skin_updatescroll();
+</action>
+
 <action name="intro_high_start">
 
     set(layer[intro_ui].visible, true);
@@ -833,6 +919,9 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 
 <action name="intro_enter_tour" scope="local" args="targetscene">
 
+    <!-- Đánh dấu đã vào tour để lần sau chọn View Flycam không chạy lại intro_high_start -->
+    set(intro_tour_started, true);
+
     <!-- Ẩn UI -->
     tween(layer[intro_ui].alpha, 0, 0.45, easeOutQuad);
 
@@ -844,10 +933,14 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
     <!-- Sau khi hạ xuống gần xong thì dừng tự quay để người dùng kéo chuột -->
     delayedcall(0.00,
         stop_scene_right_rotate();
+        tween(view.hlookat, 0.0, 0.95, easeInOutCubic);
     );
 
     delayedcall(1.05,
         set(layer[intro_ui].visible, false);
+        set(view.hlookat, 0.0);
+        set(view.vlookat, 35.0);
+        set(view.fov, 140);
         set(view.fisheye, 0.0);
         set(view.stereographic, false);
         set(view.limitview, auto);
