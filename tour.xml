@@ -965,7 +965,7 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
 </action>
 
 
-<!-- Chuyển cảnh scene -->
+<!-- Chuyển cảnh scene - không nháy trắng -->
 <action name="open_scene2_beautiful" scope="local" args="scenename">
 
     <!-- Chống click liên tục -->
@@ -977,19 +977,25 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
     stoptween(view.hlookat);
     stoptween(view.vlookat);
 
- 
+    <!-- Xóa lớp phủ trắng nếu còn tồn tại -->
+    if(layer[scene_open_cover],
+        stoptween(layer[scene_open_cover].alpha);
+        set(layer[scene_open_cover].alpha, 0);
+        set(layer[scene_open_cover].visible, false);
+        removelayer(scene_open_cover);
+    );
 
-    <!-- Load scene 2 gần như ngay lập tức, scene 1 không có hiệu ứng -->
-    loadscene(get(scenename), null, MERGE, BLEND(0.05));
+    <!-- Load scene mới mượt hơn, không dùng flash trắng -->
+    loadscene(get(scenename), null, MERGE, BLEND(0.25));
 
-    <!-- Sau khi scene 2 đã nhận view mặc định, lưu lại view gốc -->
-    delayedcall(0.06,
+    <!-- Sau khi scene 2 nhận view mặc định -->
+    delayedcall(0.08,
 
         copy(target_hlookat, view.hlookat);
         copy(target_vlookat, view.vlookat);
         copy(target_fov, view.fov);
 
-        <!-- Scene 2 bắt đầu mở ra ở trạng thái rộng hơn một chút -->
+        <!-- Scene 2 bắt đầu rộng hơn nhẹ -->
         calc(start_fov, target_fov + 22);
 
         if(start_fov GT view.fovmax,
@@ -1001,14 +1007,9 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
         set(view.fov, get(start_fov));
         set(view.vlookat, get(start_vlookat));
 
-        <!-- Scene 2 mở ra mềm về đúng view/fov đã cài -->
+        <!-- Mở scene 2 mềm về đúng view/fov đã cài -->
         tween(view.fov, get(target_fov), 3, easeOutCubic);
         tween(view.vlookat, get(target_vlookat), 3, easeOutCubic);
-
-        <!-- Lớp phủ trắng tan dần để lộ scene 2 -->
-        tween(layer[scene_open_cover].alpha, 0.0, 0.75, easeOutQuad,
-            removelayer(scene_open_cover);
-        );
 
         delayedcall(1.20,
             set(is_scene_opening, false);
@@ -1016,7 +1017,6 @@ title="&lt;b&gt;&lt;font size='4'&gt;Trường CĐ Kỹ thuật&lt;br/&gt;Công 
     );
 
 </action>
-
 
 
  
